@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 function SelcetBus(){
     const [visivleSelectOption, setVisivleSelectOption] = useState(false);
 
@@ -17,8 +18,9 @@ function SelcetBus(){
         })
     }
 
+ 
+
     const contentSelectOption = renderSelectOption();
-    console.log(contentSelectOption)
     return(
         <div className="selectBus_wrapper">
             <div onClick={()=>setVisivleSelectOption(!visivleSelectOption)} className="selectBus">

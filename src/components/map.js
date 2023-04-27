@@ -1,38 +1,50 @@
 import React from 'react';
 import { useState } from 'react';
-import { YMaps, Map,Placemark, TrafficControl} from '@pbe/react-yandex-maps';
-import pin from '../img/pin.png';
+import { YMaps, Map,Placemark, TrafficControl, Polyline} from '@pbe/react-yandex-maps';
+import stopImage from '../img/stop.png';
 import Info from './info';
 import SelcetBus from './SelectBus';
+import { trasses, trasses95 } from '../data'; 
 
-export default function MapComponent() {
+export default function MapComponent({coords}) {
 
     const [visibleInfo, setVisibleInfo] = useState(false);
     const [heightMap, setHeightMap] = useState(100);
-
+    
   const defaultState = {
-    center: [55.751574, 37.573856],
-    zoom: 5, 
+    center: [coords.lat, coords.lon],
+    zoom: 12, 
   };
 
-  const onVisibleInfo=()=>{
-    heightMap === 100 ? setHeightMap(80) : setHeightMap(100);
-    setVisibleInfo(!visibleInfo);
-  }
+  const trassesCoordArr = trasses95.filter(item => item.id == undefined).map(item => [item.lat, item.lng]) 
+
+  const ostCoordArr = trasses95.filter(item => item.id !== undefined)
+
+  const contentOst = ostCoordArr.map(({id, lat, lng, n}) => {
+    return (
+      <Placemark key={id} geometry={[lat, lng]}  
+        options={{
+            iconLayout: 'default#image',
+            iconImageHref: stopImage,
+            iconImageSize: [16, 16],
+            iconImageOffset: [-10, -5]
+        }}  />
+    )
+  })
 
   return (
     <div>
       <SelcetBus/>
         <YMaps> 
       <Map defaultState={defaultState} width={'100vw'} height={`${heightMap}vh`}>
-        <Placemark geometry={[55.76, 37.56]}  
-        onClick={onVisibleInfo}
-        options={{
-            iconLayout: 'default#image',
-            iconImageHref: pin,
-            iconImageSize: [30, 42],
-            iconImageOffset: [-3, -42]
-        }}  />
+        {contentOst}
+        <Polyline
+          geometry={trassesCoordArr}
+          options={{
+            balloonCloseButton: false,
+            strokeColor: "#000",
+            strokeWidth: 4,
+        }}/>
         <TrafficControl options={{ float: "right" }} />
       </Map>
     </YMaps>
