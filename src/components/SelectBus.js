@@ -1,34 +1,40 @@
 import { useState } from "react";
+import { dataMarsh } from "../data";
 
+function SelcetBus({ setActiveMarsh }) {
+   const [visivleSelectOption, setVisivleSelectOption] = useState(false);
+   const [title, setTitle] = useState('Остановка')
 
-function SelcetBus(){
-    const [visivleSelectOption, setVisivleSelectOption] = useState(false);
+   const marsh = dataMarsh.map(item => item.marsh);
 
-    const arr = ['asdasdf', 'asdasdf', 'asdasdf', 'asdasdf'];
-
-    const renderSelectOption = ()=>{
-       return arr.map((item, i)=>{
-            return(
-                <div 
-                    key={i}
-                    className="select_option">
-                    {item}
-                </div>
-            );
-        })
-    }
-
- 
-
-    const contentSelectOption = renderSelectOption();
-    return(
-        <div className="selectBus_wrapper">
-            <div onClick={()=>setVisivleSelectOption(!visivleSelectOption)} className="selectBus">
-                Остановка
+   const renderSelectOption = () => {
+      return marsh.map((item, i) => {
+         return (
+            <div
+               key={i}
+               className="select_option"
+               onClick={() => {
+                  setActiveMarsh(item)
+                  setTitle(item)
+                  setVisivleSelectOption(!visivleSelectOption)
+               }}>
+               {item}
             </div>
-            {visivleSelectOption ? contentSelectOption : null}
-        </div>
-    );
+         );
+      })
+   }
+
+
+
+   const contentSelectOption = renderSelectOption();
+   return (
+      <div className="selectBus_wrapper">
+         <div onClick={() => setVisivleSelectOption(!visivleSelectOption)} className="selectBus">
+            {title}
+         </div>
+         {visivleSelectOption ? contentSelectOption : null}
+      </div>
+   );
 }
 
 export default SelcetBus;
