@@ -23,10 +23,8 @@ function SelcetBus({ setActiveMarsh }) {
          );
       })
    }
-
-
-
    const contentSelectOption = renderSelectOption();
+
    return (
       <div className="selectBus_wrapper">
          <div onClick={() => setVisivleSelectOption(!visivleSelectOption)} className="selectBus">

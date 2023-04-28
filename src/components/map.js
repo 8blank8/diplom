@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { YMaps, Map, Placemark, TrafficControl, Polyline } from '@pbe/react-yandex-maps';
 import stopImage from '../img/stop.png';
-import Info from './info';
 import SelcetBus from './SelectBus';
 import { dataTrasses } from '../data';
 import kakashka from '../img/images.jpg'
+import { StatisticPage } from './statisticPage';
 
 export default function MapComponent({ coords }) {
 
@@ -49,7 +49,7 @@ export default function MapComponent({ coords }) {
             setStop(null)
          }} />
          <YMaps>
-            <Map defaultState={defaultState} width={'100vw'} height={`${heightMap}vh`}>
+            <Map style={{ position: 'relative' }} defaultState={defaultState} width={'100vw'} height={`${heightMap}vh`}>
                {contentOst && contentOst}
                {trasses && <Polyline
                   geometry={trasses}
@@ -66,9 +66,9 @@ export default function MapComponent({ coords }) {
                      iconImageSize: [20, 20],
                      iconImageOffset: [-10, -5]
                   }} />
+               <StatisticPage />
             </Map>
          </YMaps>
-         <Info visibleInfo={visibleInfo} />
       </div>
    );
 }
