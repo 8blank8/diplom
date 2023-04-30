@@ -3,6 +3,7 @@ import MapComponent from "./components/map";
 import { useState } from "react";
 // import { getMarsh } from "./service/fetchApi";
 import { StatisticPage } from './components/statisticPage';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 
 function App() {
@@ -14,8 +15,12 @@ function App() {
       })
    }, [])
    return (
-      // coords && <MapComponent coords={coords} />
-      <StatisticPage />
+      <BrowserRouter>
+         <Routes>
+            <Route index element={coords && <MapComponent coords={coords} />} />
+            <Route path="/statistic" element={<StatisticPage />} />
+         </Routes>
+      </BrowserRouter>
    );
 }
 

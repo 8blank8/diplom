@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { YMaps, Map, Placemark, TrafficControl, Polyline } from '@pbe/react-yandex-maps';
-import stopImage from '../img/stop.png';
 import SelcetBus from './SelectBus';
+import { Link } from 'react-router-dom';
+
+import stopImage from '../img/stop.png';
 import { dataTrasses } from '../data';
-// import kakashka from '../img/images.jpg'
 
 export default function MapComponent({ coords }) {
 
-   const [visibleInfo, setVisibleInfo] = useState(false);
    const [heightMap, setHeightMap] = useState(100);
    const [activeMarsh, setActiveMarsh] = useState(null);
    const [trasses, setTrasses] = useState(null);
@@ -42,14 +42,19 @@ export default function MapComponent({ coords }) {
 
    return (
       <div>
-         <SelcetBus setActiveMarsh={(item) => {
-            setActiveMarsh(item)
-            setTrasses(null)
-            setStop(null)
-         }} />
+         <div className='wrapper__button'>
+            <div className='map__button'>
+               <SelcetBus setActiveMarsh={(item) => {
+                  setActiveMarsh(item)
+                  setTrasses(null)
+                  setStop(null)
+               }} />
+            </div>
+            <Link to={'/statistic'} className='map__button map__button-link'>Статистика</Link>
+         </div>
          <YMaps>
             <Map style={{ position: 'relative' }} defaultState={defaultState} width={'100vw'} height={`${heightMap}vh`}>
-               {/* {contentOst && contentOst}
+               {contentOst && contentOst}
                {trasses && <Polyline
                   geometry={trasses}
                   options={{
@@ -58,15 +63,8 @@ export default function MapComponent({ coords }) {
                      strokeWidth: 4,
                   }} />}
                <TrafficControl options={{ float: "right" }} />
-               <Placemark geometry={['54.9437957', '82.9634881']}
-                  options={{
-                     iconLayout: 'default#image',
-                     iconImageHref: kakashka,
-                     iconImageSize: [20, 20],
-                     iconImageOffset: [-10, -5]
-                  }} /> */}
             </Map>
          </YMaps>
-      </div>
+      </div >
    );
 }

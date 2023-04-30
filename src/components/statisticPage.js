@@ -1,4 +1,5 @@
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import { Link } from 'react-router-dom';
 
 export const StatisticPage = () => {
    const data = [
@@ -35,7 +36,7 @@ export const StatisticPage = () => {
    return (
       <div className='statistic'>
          <div className='statistic__header'>
-            <div className='statistic__button'>Назад</div>
+            <Link to={"/"} className='statistic__button'>Назад</Link>
          </div>
          <div className='statistic__table'>
             <div className='statistic__title'>Время затрачиваемое на весь маршрут:</div>
