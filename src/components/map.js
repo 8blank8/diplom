@@ -4,8 +4,7 @@ import { YMaps, Map, Placemark, TrafficControl, Polyline } from '@pbe/react-yand
 import stopImage from '../img/stop.png';
 import SelcetBus from './SelectBus';
 import { dataTrasses } from '../data';
-import kakashka from '../img/images.jpg'
-import { StatisticPage } from './statisticPage';
+// import kakashka from '../img/images.jpg'
 
 export default function MapComponent({ coords }) {
 
@@ -50,7 +49,7 @@ export default function MapComponent({ coords }) {
          }} />
          <YMaps>
             <Map style={{ position: 'relative' }} defaultState={defaultState} width={'100vw'} height={`${heightMap}vh`}>
-               {contentOst && contentOst}
+               {/* {contentOst && contentOst}
                {trasses && <Polyline
                   geometry={trasses}
                   options={{
@@ -65,8 +64,7 @@ export default function MapComponent({ coords }) {
                      iconImageHref: kakashka,
                      iconImageSize: [20, 20],
                      iconImageOffset: [-10, -5]
-                  }} />
-               <StatisticPage />
+                  }} /> */}
             </Map>
          </YMaps>
       </div>

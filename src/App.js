@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import MapComponent from "./components/map";
 import { useState } from "react";
 // import { getMarsh } from "./service/fetchApi";
+import { StatisticPage } from './components/statisticPage';
+
 
 function App() {
    const [coords, setCoords] = useState(null)
@@ -12,7 +14,8 @@ function App() {
       })
    }, [])
    return (
-      coords && <MapComponent coords={coords} />
+      // coords && <MapComponent coords={coords} />
+      <StatisticPage />
    );
 }
 
