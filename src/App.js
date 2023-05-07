@@ -1,11 +1,24 @@
 import MapComponent from "./components/map";
+import { useEffect } from "react";
 import { StatisticPage } from './components/statisticPage';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { YMaps} from '@pbe/react-yandex-maps';
 import { Menu } from "./components/Menu";
 import { StartScreen } from "./components/StartScreen";
 
+import { useDispatch } from "react-redux";
+import { getAllTransport } from "./service/fetchApi";
+import { setMarshListAction } from "./redux/actions";
+
 function App() {
+   const dispatch = useDispatch()
+
+   useEffect(()=>{
+      (async function(){
+         const data = await getAllTransport()
+         dispatch(setMarshListAction(data))
+      })()
+   }, [])
 
    return (
       <>

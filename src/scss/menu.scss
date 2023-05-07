@@ -6,8 +6,14 @@
     flex-direction: column;
 }
 
+.menu__title{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
 .select{
-    padding-top: 65px;
+    padding-top: 55px;
 
     &__item{
         margin-bottom: 10px;
@@ -15,6 +21,8 @@
 }
 
 .date{
+    padding-top: 15px;
+
     &__item{
         display: flex;
         justify-content: space-between;
@@ -23,6 +31,33 @@
     &__title{
         line-height: 50px;
     }
+}
+
+.statistic__title{
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+.statistic__buttons{
+    margin-top: 15px;
+}
+
+.statistic__btn{
+    background-color: #F5F5F5;
+    border-radius: 40px;
+    height: 35px;
+    display: inline-block;
+    font-size: 14px;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+    &:last-child{
+        margin: 0;
+    }
+}
+
+.active{
+    background-color: #FC5A37;
+    color: #fff;
 }
 
 .menu__statistic{
@@ -44,6 +79,10 @@
     cursor: pointer;
     transition-duration: 0.3s;
 
+    
+}
+
+.activeBtn{
     &:hover{
         box-shadow: 0px 20px 20px -10px rgba(252, 90, 55, 0.3);
     }
@@ -51,4 +90,8 @@
 
 .buttonDisable{
     background-color: #D7D7D7;
+}
+
+.disabledSelect{
+    cursor: default;
 }

@@ -1,37 +1,31 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { YMaps, Map, Placemark, TrafficControl, Polyline } from '@pbe/react-yandex-maps';
-import SelcetBus from './SelectBus';
-import { Link } from 'react-router-dom';
+import { Map, Placemark, TrafficControl, Polyline } from '@pbe/react-yandex-maps';
+import { useSelector } from 'react-redux';
 
 import stopImage from '../img/stop.png';
-import { dataTrasses } from '../data';
+// import { dataTrasses } from '../data';
 
 export default function MapComponent({ coords }) {
 
+   const trassesArr = useSelector(({trasses}) => trasses)
+
    const [widthMap, setWidthMap] = useState(84)
    const [heightMap, setHeightMap] = useState(95.5);
-   const [activeMarsh, setActiveMarsh] = useState(null);
    const [trasses, setTrasses] = useState(null);
    const [stop, setStop] = useState(null);
 
-   const defaultState = {
-      center: [ '55,0415', '82,9346'],
-      zoom: 12,
-   };
-
    useEffect(() => {
-      if (activeMarsh !== null) {
-         const st = dataTrasses.find(item => item.marsh === activeMarsh)
-         setTrasses(st.trasses.map(item => [item.lat, item.lng]))
-         setStop(st.trasses.filter(item => item.id !== undefined))
-      }
+         if(trassesArr.length !== 0){
+            setTrasses(trassesArr.traces.map(({latLng})=> [latLng.lat, latLng.lng]))
+            setStop(trassesArr.traces.filter(item => item.stop))
+         }
 
-   }, [activeMarsh])
+   }, [trassesArr])
 
-   const contentOst = stop && stop.map(({ id, lat, lng, n }) => {
+   const contentOst = stop && stop.map(({ stop }) => {
       return (
-         <Placemark key={id} geometry={[lat, lng]}
+         <Placemark key={stop.id} geometry={[stop.latLng.lat, stop.latLng.lng]}
             options={{
                iconLayout: 'default#image',
                iconImageHref: stopImage,
@@ -43,16 +37,6 @@ export default function MapComponent({ coords }) {
 
    return (
       <div>
-         {/* <div className='wrapper__button'>
-            <div className='map__button'>
-               <SelcetBus setActiveMarsh={(item) => {
-                  setActiveMarsh(item)
-                  setTrasses(null)
-                  setStop(null)
-               }} />
-            </div>
-            <Link to={'/statistic'} className='map__button map__button-link'>Статистика</Link>
-         </div> */}
             <div className='map' style={{width: `${widthMap}vw`, height: `${heightMap}vh`}}>
                <Map  defaultState={{center: [55.0415, 82.9346], zoom: 9}} width={`${widthMap}vw`} height={`${heightMap}vh`}>
                   {contentOst && contentOst}
