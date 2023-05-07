@@ -13,7 +13,7 @@ export const StatisticPage = () => {
       },
       {
          "stop": "3 остановка",
-         "time": 540,
+         "time": 10,
       },
       {
          "stop": "4 остановка",
@@ -35,29 +35,51 @@ export const StatisticPage = () => {
 
    return (
       <div className='statistic'>
-         <div className='statistic__header'>
-            <Link to={"/"} className='statistic__button'>Назад</Link>
+         <div className='info'>
+            <div className='info__title'>Статистика</div>
+            <div className='info__items'>
+               <div className='info__item'>
+                  <div className='info__item-title'>
+                     Вид статистики
+                  </div>
+                  <div className='info__item-desc'>
+                     Скорость борта
+                  </div>
+               </div>
+               <div className='info__item'>
+                  <div className='info__item-title'>
+                     Маршрут
+                  </div>
+                  <div className='info__item-desc'>
+                     Автобус 92
+                  </div>
+               </div>
+               <div className='info__item'>
+                  <div className='info__item-title'>
+                     Сегмент
+                  </div>
+                  <div className='info__item-desc'>
+                     Центральный корпус - Космическая улица
+                  </div>
+               </div>
+               <div className='info__item'>
+                  <div className='info__item-title'>
+                     Временной отрезок
+                  </div>
+                  <div className='info__item-desc'>
+                     01.05.23 - 14.05.23
+                  </div>
+               </div>
+            </div>
          </div>
          <div className='statistic__table'>
-            <div className='statistic__title'>Время затрачиваемое на весь маршрут:</div>
-            <LineChart width={1200} height={250} data={data}>
+            <LineChart width={1530} height={614} data={data}>
                <CartesianGrid strokeDasharray="3 3" />
                <XAxis dataKey="stop" />
                <YAxis />
                <Tooltip />
                <Legend />
-               <Line type="monotone" dataKey="time" stroke="#8884d8" />
-            </LineChart>
-         </div>
-         <div className='statistic__table'>
-            <div className='statistic__title'>Средняя скорость на один маршрут:</div>
-            <LineChart width={1200} height={250} data={data}>
-               <CartesianGrid strokeDasharray="3 3" />
-               <XAxis dataKey="stop" />
-               <YAxis />
-               <Tooltip />
-               <Legend />
-               <Line type="monotone" dataKey="time" stroke="#8884d8" />
+               <Line type="monotone" dataKey="time" stroke="#FC5A37" />
             </LineChart>
          </div>
       </div>

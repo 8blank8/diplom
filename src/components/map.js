@@ -9,19 +9,20 @@ import { dataTrasses } from '../data';
 
 export default function MapComponent({ coords }) {
 
-   const [heightMap, setHeightMap] = useState(100);
+   const [widthMap, setWidthMap] = useState(84)
+   const [heightMap, setHeightMap] = useState(95.5);
    const [activeMarsh, setActiveMarsh] = useState(null);
    const [trasses, setTrasses] = useState(null);
    const [stop, setStop] = useState(null);
 
    const defaultState = {
-      center: [coords.lat, coords.lon],
+      center: [ '55,0415', '82,9346'],
       zoom: 12,
    };
 
    useEffect(() => {
       if (activeMarsh !== null) {
-         const st = dataTrasses.find(item => item.marsh == activeMarsh)
+         const st = dataTrasses.find(item => item.marsh === activeMarsh)
          setTrasses(st.trasses.map(item => [item.lat, item.lng]))
          setStop(st.trasses.filter(item => item.id !== undefined))
       }
@@ -42,7 +43,7 @@ export default function MapComponent({ coords }) {
 
    return (
       <div>
-         <div className='wrapper__button'>
+         {/* <div className='wrapper__button'>
             <div className='map__button'>
                <SelcetBus setActiveMarsh={(item) => {
                   setActiveMarsh(item)
@@ -51,20 +52,20 @@ export default function MapComponent({ coords }) {
                }} />
             </div>
             <Link to={'/statistic'} className='map__button map__button-link'>Статистика</Link>
-         </div>
-         <YMaps>
-            <Map style={{ position: 'relative' }} defaultState={defaultState} width={'100vw'} height={`${heightMap}vh`}>
-               {contentOst && contentOst}
-               {trasses && <Polyline
-                  geometry={trasses}
-                  options={{
-                     balloonCloseButton: false,
-                     strokeColor: "#000",
-                     strokeWidth: 4,
-                  }} />}
-               <TrafficControl options={{ float: "right" }} />
-            </Map>
-         </YMaps>
+         </div> */}
+            <div className='map' style={{width: `${widthMap}vw`, height: `${heightMap}vh`}}>
+               <Map  defaultState={{center: [55.0415, 82.9346], zoom: 9}} width={`${widthMap}vw`} height={`${heightMap}vh`}>
+                  {contentOst && contentOst}
+                  {trasses && <Polyline
+                     geometry={trasses}
+                     options={{
+                        balloonCloseButton: false,
+                        strokeColor: "#000",
+                        strokeWidth: 4,
+                     }} />}
+                  <TrafficControl options={{ float: "right" }} />
+               </Map>
+            </div>
       </div >
    );
 }

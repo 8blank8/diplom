@@ -1,42 +1,38 @@
 .statistic{
-   // position: absolute;
-   // bottom: 0;
-   // left: 0;
-   height: 100vh;
-   background-color: lightgoldenrodyellow;
-   padding: 20px
-
+   height: 95.5vh;
+   width: 84vw;
+   margin: 20px 20px 20px 0;
+   border-radius: 30px;
+   overflow: hidden;
+   background-color: #F5F5F5;
+   padding: 20px 30px;
 }
 
-.statistic__title{
-   padding: 0px 0px 0px 25px;
-   margin-bottom: 10px;
+.info{
+   background-color: #fff;
+   max-width: 400px;
+   height: 180px;
+   border-radius: 30px;
+   padding: 20px;
+
+   &__title{
+      font-size: 24px;
+      font-weight: 600;
+   }
+
+   &__item{
+      display: flex;
+
+      &-title{
+         font-weight: 600;
+         margin-right: 10px;
+      }
+    }
 }
 
 .statistic__table{
-   padding: 40px 0px 0px 0px;
+   margin: 50px 0px 0px 0px;
+   padding: 20px 0 0 0;
+   background-color: #fff;
+   border-radius: 30px;
 }
-
-.statistic__header{
-   padding: 0px 0px 0px 20px;
-}
-
-.statistic__button{
-   text-align: center;
-   background-color: lightslategray;
-   color: lightgoldenrodyellow;
-   transition-duration: 0.3s;
-   text-decoration: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    width: 150px;
-    border: 1px solid #000;
-    border-radius: 5px;
-
-   &:hover{
-      background-color: lightgoldenrodyellow;
-      color: #000;
-      border: 1px solid #000;
-   }
-}
-

@@ -1,0 +1,67 @@
+.select__item{
+    background-color: #F5F5F5;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.select__title{
+    color: #afafaf;
+    align-self: center;
+}
+
+.select__arrow{
+    align-self: center;
+}
+
+.select__options{
+    background-color: #F5F5F5;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 240px;
+    z-index: 100;
+}
+
+.select__option{
+    padding: 0 20px;
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.active{
+    display: block;
+}
+
+.noActive{
+    display: none;
+}
+
+.arrowActive{
+    transform: rotate(180deg);
+}
+
+.arrowNotActive{
+    transform: rotate(0deg);
+}
+
+.selectActive{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.selectNotActive{
+    border-radius: 25px;
+}
+
+.titleActive{
+    color: #1F1F1F;
+}
