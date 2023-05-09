@@ -50,14 +50,16 @@
     font-size: 14px;
     padding: 7px 10px;
     margin-bottom: 10px;
+    cursor: pointer;
     &:last-child{
         margin: 0;
     }
 }
 
-.active{
+.activeBtnStat{
     background-color: #FC5A37;
     color: #fff;
+    
 }
 
 .menu__statistic{
