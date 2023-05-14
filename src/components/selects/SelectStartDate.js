@@ -2,8 +2,10 @@ import arrowImage from '../../img/arrow.png'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setStartDateAction } from '../../redux/actions'
+import { getDateTwoWeek } from '../../statisticGen'
 
-const dateArr = ['09.05.2023', '08.05.2023', '07.05.2023']
+const dateArr = getDateTwoWeek()
+
 
 export const SelectStartDate = () =>{
     

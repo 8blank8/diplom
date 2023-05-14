@@ -2,8 +2,9 @@ import arrowImage from '../../img/arrow.png'
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setLastDateAction } from '../../redux/actions'
+import { getDateTwoWeek } from '../../statisticGen'
 
-const dateArr = ['09.05.2023', '08.05.2023', '07.05.2023']
+const dateArr = getDateTwoWeek().reverse()
 
 export const SelectLastDate = () =>{
 

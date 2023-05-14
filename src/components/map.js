@@ -4,9 +4,8 @@ import { Map, Placemark, TrafficControl, Polyline } from '@pbe/react-yandex-maps
 import { useSelector } from 'react-redux';
 
 import stopImage from '../img/stop.png';
-// import { dataTrasses } from '../data';
 
-export default function MapComponent({ coords }) {
+export default function MapComponent({ socket }) {
 
    const trassesArr = useSelector(({trasses}) => trasses)
 
@@ -14,6 +13,21 @@ export default function MapComponent({ coords }) {
    const [heightMap, setHeightMap] = useState(95.5);
    const [trasses, setTrasses] = useState(null);
    const [stop, setStop] = useState(null);
+
+   const [busIcon, setBusIcon] = useState(null)
+
+   // useEffect(() => {
+
+   //    const busIconListenner = (bus) => {
+   //       // setBusIcon(bus)
+   //       console.log(bus)
+   //    }
+
+   //    socket.on('markers', busIconListenner)
+
+   //    return () => socket.off('markers', busIconListenner)
+
+   // }, [socket]) 
 
    useEffect(() => {
          if(trassesArr.length !== 0){
